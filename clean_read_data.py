@@ -19,7 +19,10 @@ def get_high(frame):
 def get_low(frame):
     return frame['Low'].tolist()
 
+# visualization imports
 import matplotlib.pyplot as plt
+
+# basic data object to ease usability
 class Data:
     def __init__(self):
         self.time = len(get_dates(df))
@@ -28,7 +31,8 @@ class Data:
         self.highl = get_high(df)[::-1]
         self.lowl = get_low(df)[::-1]
         self.df = df
-    
+
+    # helper function
     def str_convert(self, str_metric: str):
         if str_metric == "open":
             return self.openl
@@ -37,6 +41,7 @@ class Data:
         elif str_metric == "low":
             return self.lowl 
 
+    # build visual
     def visualize(self, metrics: list[str], plotsame=True):
         '''Metrics include Open, High, Low.
         Plotsame is True to plot listed metrics on one plot.'''
@@ -44,11 +49,14 @@ class Data:
         for m in metrics:
             m.lower().strip()
 
+        # use common graph
         if (plotsame):
             for m in metrics:
                 metric_list = self.str_convert(m)
                 print(m)
                 plt.plot(self.X, metric_list, label=m)
+                
+        # use subplots
         else:
             num_metrics = len(metrics)
             fig, axs = plt.subplots(num_metrics)
