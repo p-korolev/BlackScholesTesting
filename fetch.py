@@ -1,6 +1,6 @@
 import math
 
-# helper formulas---------------------
+# helper formulas------------------------
 # get variance
 def get_variance(dataset: list[float]):
     length = len(dataset)
@@ -18,8 +18,11 @@ def get_sd(dataset: list[float]):
     variance = get_variance(dataset)
     return math.sqrt(variance)
 
-# For Black-Scholes model----------------
+# main pricing model---------------------
+# import for normal distribution
 from scipy.stats import norm
+
+# Black-Scholes model
 def calculte_call_price(curr_price: float, strike_price: float,
                         rf_interest: float, days_to_maturity: int,
                         variance: float):
