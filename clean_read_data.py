@@ -59,8 +59,6 @@ class Data:
         plt.show()
     
 
-data = Data()
-data.visualize(["open", "low", "high"])
 
 
         
