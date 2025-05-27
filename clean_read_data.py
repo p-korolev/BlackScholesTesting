@@ -1,6 +1,6 @@
 import pandas as pd
 
-FILEPATH = r"C:/Users/phillip.korolev/Documents/pytests/blackscholes/Download Data - STOCK_US_XNAS_TSLA.csv"
+FILEPATH = r"[PATH]/Download Data - STOCK_US_XNAS_TSLA.csv"
 
 df = pd.read_csv(FILEPATH)
 null = df.isnull()
