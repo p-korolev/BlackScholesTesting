@@ -1,5 +1,7 @@
 import math
 
+# helper formulas---------------------
+# get variance
 def get_variance(dataset: list[float]):
     length = len(dataset)
     if length<2:
@@ -11,6 +13,7 @@ def get_variance(dataset: list[float]):
     variance = s/(length-1)
     return variance
 
+# get standard deviation (volatility)
 def get_sd(dataset: list[float]):
     variance = get_variance(dataset)
     return math.sqrt(variance)
@@ -31,5 +34,4 @@ def calculte_call_price(curr_price: float, strike_price: float,
     call_price = (curr_price*norm_d1) - (strike_price*math.exp((-rf_interest)*(days_to_maturity))*norm.cdf(d2))
     return call_price
 
-print(calculte_call_price(22.5, 35, 0.13, 100, 0.33))
 
