@@ -1,28 +1,26 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+from typing import Union, List
 
+# for testing
 FILEPATH = r"[PATH]/Download Data - STOCK_US_XNAS_TSLA.csv"
-
 df = pd.read_csv(FILEPATH)
-null = df.isnull()
-# check null -> None
+null = df.isnull() # check null -> None
 
-# simple getters -> list
-def get_dates(frame):
+# simple getters
+def get_dates(frame: pd.DataFrame) -> List:
     return frame['Date'].tolist()
 
-def get_open(frame):
+def get_open(frame: pd.DataFrame) -> List:
     return frame['Open'].tolist()
 
-def get_high(frame):
+def get_high(frame: pd.DataFrame) -> List:
     return frame['High'].tolist()
 
-def get_low(frame):
+def get_low(frame: pd.DataFrame) -> List:
     return frame['Low'].tolist()
 
-# visualization imports
-import matplotlib.pyplot as plt
-
-# basic data object to ease usability
+# For data readability
 class Data:
     def __init__(self):
         self.time = len(get_dates(df))
@@ -33,7 +31,7 @@ class Data:
         self.df = df
 
     # helper function
-    def str_convert(self, str_metric: str):
+    def str_convert(self, str_metric: str) -> List:
         if str_metric == "open":
             return self.openl
         elif str_metric == "high":
@@ -42,7 +40,7 @@ class Data:
             return self.lowl 
 
     # build visual
-    def visualize(self, metrics: list[str], plotsame=True):
+    def visualize(self, metrics: List[str], plotsame=True) -> None:
         '''Metrics include Open, High, Low.
         Plotsame is True to plot listed metrics on one plot.'''
         # clean 
