@@ -2,7 +2,7 @@ import math
 import numpy as np
 import pandas as pd
 from scipy.stats import norm
-from typing import Union
+from typing import Union, List
 
 # helpers
 def get_variance(dataset: Union[List, pd.Series) -> np.float64:
