@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from typing import Union, List
 
-FILEPATH = r"[PATH]/Download Data - STOCK_US_XNAS_TSLA.csv"
+FILEPATH = r"[PATH]/TSLA_US_DATA.csv"
 MAIN_FRAME = pd.read_csv(FILEPATH)
 EMPTY = df.isnull()
 
@@ -63,3 +63,4 @@ class Data:
         plt.legend()
         plt.show()
         
+
