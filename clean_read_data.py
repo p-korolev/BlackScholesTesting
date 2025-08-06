@@ -2,10 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from typing import Union, List
 
-# for testing
 FILEPATH = r"[PATH]/Download Data - STOCK_US_XNAS_TSLA.csv"
-df = pd.read_csv(FILEPATH)
-null = df.isnull() # check null -> None
+MAIN_FRAME = pd.read_csv(FILEPATH)
+EMPTY = df.isnull()
 
 # simple getters
 def get_dates(frame: pd.DataFrame) -> List:
@@ -23,12 +22,12 @@ def get_low(frame: pd.DataFrame) -> List:
 # For data readability
 class Data:
     def __init__(self):
-        self.time = len(get_dates(df))
+        self.time = len(get_dates(MAIN_FRAME))
         self.X = range(1, self.time + 1)
-        self.openl = get_open(df)[::-1]
-        self.highl = get_high(df)[::-1]
-        self.lowl = get_low(df)[::-1]
-        self.df = df
+        self.df = MAIN_FRAME
+        self.openl = get_open(MAIN_FRAME)[::-1]
+        self.highl = get_high(MAIN_FRAME)[::-1]
+        self.lowl = get_low(MAIN_FRAME)[::-1]
 
     # helper function
     def str_convert(self, str_metric: str) -> List:
@@ -63,13 +62,4 @@ class Data:
             
         plt.legend()
         plt.show()
-    
-
-
-
         
-        
-    
-
-
-
